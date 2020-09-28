@@ -1,13 +1,8 @@
-package de.metas.handlingunits.pporder.api.impl;
-
-import java.time.LocalDate;
-import java.time.ZonedDateTime;
-
 /*
  * #%L
  * de.metas.handlingunits.base
  * %%
- * Copyright (C) 2015 metas GmbH
+ * Copyright (C) 2020 metas GmbH
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -24,6 +19,11 @@ import java.time.ZonedDateTime;
  * <http://www.gnu.org/licenses/gpl-2.0.html>.
  * #L%
  */
+
+package de.metas.handlingunits.pporder.api.impl;
+
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -106,7 +106,9 @@ import lombok.Value;
 	private ZonedDateTime _movementDate;
 	private LocatorId locatorId;
 	private PickingCandidateId pickingCandidateId;
+	@Nullable
 	private String lotNumber;
+	@Nullable
 	private LocalDate bestBeforeDate;
 	//
 	@Deprecated
@@ -182,7 +184,7 @@ import lombok.Value;
 		}
 	}
 
-	private final List<I_M_HU> createReceiptCandidatesAndPlanningHUs_InTrx(@NonNull final Quantity qtyToReceive)
+	private List<I_M_HU> createReceiptCandidatesAndPlanningHUs_InTrx(@NonNull final Quantity qtyToReceive)
 	{
 		//
 		// Create HU Context
@@ -398,7 +400,7 @@ import lombok.Value;
 		);
 	}
 
-	private final IHUProducerAllocationDestination createAllocationDestination()
+	private IHUProducerAllocationDestination createAllocationDestination()
 	{
 		if (receiveOneVHU)
 		{
@@ -419,7 +421,7 @@ import lombok.Value;
 		return this;
 	}
 
-	private final I_M_HU_LUTU_Configuration getCreateLUTUConfiguration()
+	private I_M_HU_LUTU_Configuration getCreateLUTUConfiguration()
 	{
 		if (_lutuConfiguration == null)
 		{
@@ -451,7 +453,7 @@ import lombok.Value;
 	}
 
 	@Override
-	public IPPOrderReceiptHUProducer bestBeforeDate(final LocalDate bestBeforeDate)
+	public IPPOrderReceiptHUProducer bestBeforeDate(@Nullable final LocalDate bestBeforeDate)
 	{
 		this.bestBeforeDate = bestBeforeDate;
 		return this;

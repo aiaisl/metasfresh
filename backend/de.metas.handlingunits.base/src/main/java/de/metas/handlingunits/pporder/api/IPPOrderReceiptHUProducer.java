@@ -35,6 +35,8 @@ import de.metas.handlingunits.model.I_PP_Order_Qty;
 import de.metas.handlingunits.picking.PickingCandidateId;
 import de.metas.quantity.Quantity;
 
+import javax.annotation.Nullable;
+
 /**
  * Generates manufacturing receipt candidates ({@link I_PP_Order_Qty}) together with the planning HUs.
  *
@@ -87,5 +89,5 @@ public interface IPPOrderReceiptHUProducer
 
 	IPPOrderReceiptHUProducer lotNumber(String lotNumber);
 
-	IPPOrderReceiptHUProducer bestBeforeDate(LocalDate bestBeforeDate);
+	IPPOrderReceiptHUProducer bestBeforeDate(@Nullable LocalDate bestBeforeDate);
 }

@@ -3,6 +3,7 @@ import { Set as iSet } from 'immutable';
 import { createSelector } from 'reselect';
 import { createCachedSelector } from 're-reselect';
 import merge from 'merge';
+import deepmerge from 'deepmerge';
 
 import {
   ACTIVATE_TAB,
@@ -517,7 +518,20 @@ export default function windowHandler(state = initialState, action) {
       } else {
         const currentVal = state[scope] ? state[scope][property] : {};
 
-        newValue = merge.recursive(true, currentVal, value);
+        // because some fields can have added/removed fields when there's
+        // a change and we don't want the leftovers in the store
+        if (property === 'data') {
+
+          // newValue = {
+          //   ...currentVal,
+          //   ...value,
+          // };
+
+          // console.log('current: ', newValue)
+
+        } else {
+          newValue = merge.recursive(true, currentVal, value);
+        }
       }
 
       return update(state, {

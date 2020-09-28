@@ -10,7 +10,7 @@ import { DATE_FIELDS } from '../../constants/Constants';
 import {
   generateMomentObj,
   getFormatForDateField,
-} from '../widget/RawWidgetHelpers';
+} from '../../utils/widgetHelpers';
 import { parseDateWithCurrentTimezone } from '../../utils/documentListHelper';
 import { fieldValueToString } from '../../utils/tableHelpers';
 import FiltersFrequent from './FiltersFrequent';

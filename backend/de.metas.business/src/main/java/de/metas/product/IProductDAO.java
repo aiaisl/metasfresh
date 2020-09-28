@@ -161,4 +161,7 @@ public interface IProductDAO extends ISingletonService
 	I_M_Product createProduct(CreateProductRequest request);
 
 	void updateProduct(UpdateProductRequest request);
+
+	int getProductGuaranteeDaysMinFallbackProductCategory(@NonNull final ProductId productId);
+
 }

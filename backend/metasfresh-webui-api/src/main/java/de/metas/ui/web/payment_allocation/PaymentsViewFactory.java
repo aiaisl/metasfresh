@@ -157,10 +157,12 @@ public class PaymentsViewFactory implements IViewFactory, IViewsIndexStorage
 	private List<RelatedProcessDescriptor> getPaymentRelatedProcessDescriptors()
 	{
 		return ImmutableList.of(
-				createProcessDescriptor(10, PaymentsView_Allocate.class),
-				createProcessDescriptor(20, PaymentsView_AllocateAndDiscount.class),
-				createProcessDescriptor(30, PaymentsView_AllocateAndWriteOff.class),
-				createProcessDescriptor(40, PaymentsView_AddAdditionalPayment.class));
+				createProcessDescriptor(10, PaymentsView_Allocate.class)
+				// ,
+				// createProcessDescriptor(20, PaymentsView_AllocateAndDiscount.class),
+				// createProcessDescriptor(30, PaymentsView_AllocateAndWriteOff.class),
+				// createProcessDescriptor(40, PaymentsView_AddAdditionalPayment.class)
+		);
 	}
 
 	private List<RelatedProcessDescriptor> getInvoiceRelatedProcessDescriptors()

@@ -243,7 +243,10 @@ public class PaymentAndInvoiceRowsRepo
 
 	private Optional<InvoiceProcessingFeeCalculation> computeServiceFee(final InvoiceToAllocate invoiceToAllocate, final ZonedDateTime evaluationDate)
 	{
-		if (!invoiceToAllocate.getDocBaseType().isCustomerInvoice())
+		final boolean isServiceFeeAllowed = !(invoiceToAllocate.getDocBaseType().isCustomerInvoice()
+				|| invoiceToAllocate.getDocBaseType().isCreditMemo()
+		);
+		if (isServiceFeeAllowed)
 		{
 			return Optional.empty();
 		}
